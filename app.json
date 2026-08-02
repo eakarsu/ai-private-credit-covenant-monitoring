@@ -1,0 +1,1281 @@
+{
+  "id": "ai-private-credit-covenant-monitoring",
+  "title": "Private Credit Sentinel",
+  "tagline": "Borrower reporting, covenant compliance, borrowing-base control, and portfolio surveillance",
+  "industry": "Private Credit and Direct Lending",
+  "port": 4523,
+  "accent": "#1d4ed8",
+  "valueLabel": "Commitments monitored",
+  "value": "$3.8B",
+  "workflows": [
+    {
+      "id": "covenant-test",
+      "title": "Financial Covenant Testing",
+      "description": "Calculate leverage, fixed-charge coverage, minimum liquidity, and other agreement-defined tests.",
+      "fields": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "testDate",
+          "label": "Test Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "leverageRatio",
+          "label": "Leverage Ratio",
+          "type": "number",
+          "required": true
+        },
+        {
+          "key": "covenantLimit",
+          "label": "Covenant Limit",
+          "type": "number",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "borrower": "Borrower STD-2026-104",
+            "testDate": "2026-09-08",
+            "leverageRatio": 125,
+            "covenantLimit": 125
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "borrower": "Borrower RISK-2026-227",
+            "testDate": "2026-08-19",
+            "leverageRatio": 975,
+            "covenantLimit": 975
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "borrower": "Borrower EXC-2026-319",
+            "testDate": "2026-08-10",
+            "leverageRatio": 41,
+            "covenantLimit": 41
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "borrowing-base",
+      "title": "Borrowing Base Certificate",
+      "description": "Validate eligible receivables, inventory, reserves, concentrations, availability, and signatures.",
+      "fields": [
+        {
+          "key": "facility",
+          "label": "Credit Facility",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "eligibleReceivables",
+          "label": "Eligible Receivables",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "eligibleInventory",
+          "label": "Eligible Inventory",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "reserves",
+          "label": "Reserves",
+          "type": "currency",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "facility": "Credit Facility STD-2026-104",
+            "eligibleReceivables": 285000,
+            "eligibleInventory": 285000,
+            "reserves": 285000
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "facility": "Credit Facility RISK-2026-227",
+            "eligibleReceivables": 875000,
+            "eligibleInventory": 875000,
+            "reserves": 875000
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "facility": "Credit Facility EXC-2026-319",
+            "eligibleReceivables": 142500,
+            "eligibleInventory": 142500,
+            "reserves": 142500
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "reporting",
+      "title": "Borrower Reporting Compliance",
+      "description": "Track financial statements, compliance certificates, KPIs, budgets, and lender deliverables.",
+      "fields": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "deliverable",
+          "label": "Deliverable",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "dueDate",
+          "label": "Due Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "submissionStatus",
+          "label": "Submission Status",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "borrower": "Borrower STD-2026-104",
+            "deliverable": "Deliverable STD-2026-104",
+            "dueDate": "2026-09-08",
+            "submissionStatus": "Submission Status STD-2026-104"
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "borrower": "Borrower RISK-2026-227",
+            "deliverable": "Deliverable RISK-2026-227",
+            "dueDate": "2026-08-19",
+            "submissionStatus": "Submission Status RISK-2026-227"
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "borrower": "Borrower EXC-2026-319",
+            "deliverable": "Deliverable EXC-2026-319",
+            "dueDate": "2026-08-10",
+            "submissionStatus": "Submission Status EXC-2026-319"
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "watchlist",
+      "title": "Portfolio Watchlist",
+      "description": "Combine payment, covenant, liquidity, sponsor, industry, and news signals into monitored risk cases.",
+      "fields": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "riskSignal",
+          "label": "Risk Signal",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "exposure",
+          "label": "Exposure",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "watchNotes",
+          "label": "Watch Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "borrower": "Borrower STD-2026-104",
+            "riskSignal": "Risk Signal STD-2026-104",
+            "exposure": 285000,
+            "watchNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "borrower": "Borrower RISK-2026-227",
+            "riskSignal": "Risk Signal RISK-2026-227",
+            "exposure": 875000,
+            "watchNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "borrower": "Borrower EXC-2026-319",
+            "riskSignal": "Risk Signal EXC-2026-319",
+            "exposure": 142500,
+            "watchNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "amendment",
+      "title": "Waiver & Amendment Workflow",
+      "description": "Control breach notice, reservation of rights, lender approvals, fees, conditions, and effective terms.",
+      "fields": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "breach",
+          "label": "Breach",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "waiverFee",
+          "label": "Waiver Fee",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "conditions",
+          "label": "Conditions",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "borrower": "Borrower STD-2026-104",
+            "breach": "Breach STD-2026-104",
+            "waiverFee": 285000,
+            "conditions": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "borrower": "Borrower RISK-2026-227",
+            "breach": "Breach RISK-2026-227",
+            "waiverFee": 875000,
+            "conditions": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "borrower": "Borrower EXC-2026-319",
+            "breach": "Breach EXC-2026-319",
+            "waiverFee": 142500,
+            "conditions": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "collateral",
+      "title": "Collateral Monitoring",
+      "description": "Track appraisals, field exams, liens, insurance, dominion, concentration, and collateral deterioration.",
+      "fields": [
+        {
+          "key": "facility",
+          "label": "Credit Facility",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "collateralType",
+          "label": "Collateral Type",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "collateralValue",
+          "label": "Collateral Value",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "collateralNotes",
+          "label": "Collateral Notes",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "facility": "Credit Facility STD-2026-104",
+            "collateralType": "Collateral Type STD-2026-104",
+            "collateralValue": 285000,
+            "collateralNotes": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "facility": "Credit Facility RISK-2026-227",
+            "collateralType": "Collateral Type RISK-2026-227",
+            "collateralValue": 875000,
+            "collateralNotes": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "facility": "Credit Facility EXC-2026-319",
+            "collateralType": "Collateral Type EXC-2026-319",
+            "collateralValue": 142500,
+            "collateralNotes": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "title": "Portfolio Valuation Review",
+      "description": "Review enterprise value, comparable multiples, waterfall, recovery, and fair-value support.",
+      "fields": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "enterpriseValue",
+          "label": "Enterprise Value",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "netDebt",
+          "label": "Net Debt",
+          "type": "currency",
+          "required": true
+        },
+        {
+          "key": "valuationRationale",
+          "label": "Valuation Rationale",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "borrower": "Borrower STD-2026-104",
+            "enterpriseValue": 285000,
+            "netDebt": 285000,
+            "valuationRationale": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "borrower": "Borrower RISK-2026-227",
+            "enterpriseValue": 875000,
+            "netDebt": 875000,
+            "valuationRationale": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "borrower": "Borrower EXC-2026-319",
+            "enterpriseValue": 142500,
+            "netDebt": 142500,
+            "valuationRationale": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    },
+    {
+      "id": "committee",
+      "title": "Credit Committee Package",
+      "description": "Assemble performance, covenant, risk, valuation, recommendation, dissent, and approval evidence.",
+      "fields": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "meetingDate",
+          "label": "Meeting Date",
+          "type": "date",
+          "required": true
+        },
+        {
+          "key": "recommendation",
+          "label": "Recommendation",
+          "type": "text",
+          "required": true
+        },
+        {
+          "key": "committeeMemo",
+          "label": "Committee Memo",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "states": [
+        "intake",
+        "analyzing",
+        "review",
+        "approved",
+        "closed"
+      ],
+      "examples": [
+        {
+          "id": "standard",
+          "label": "Fill Standard Case",
+          "values": {
+            "borrower": "Borrower STD-2026-104",
+            "meetingDate": "2026-09-08",
+            "recommendation": "Recommendation STD-2026-104",
+            "committeeMemo": "Complete: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "high-risk",
+          "label": "Fill High-Risk Case",
+          "values": {
+            "borrower": "Borrower RISK-2026-227",
+            "meetingDate": "2026-08-19",
+            "recommendation": "Recommendation RISK-2026-227",
+            "committeeMemo": "Critical exception: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        },
+        {
+          "id": "exception",
+          "label": "Fill Exception Case",
+          "values": {
+            "borrower": "Borrower EXC-2026-319",
+            "meetingDate": "2026-08-10",
+            "recommendation": "Recommendation EXC-2026-319",
+            "committeeMemo": "Reviewer follow-up: source evidence, financial impact, control context, and documented reviewer rationale are available for analysis."
+          }
+        }
+      ],
+      "aiActions": [
+        {
+          "id": "assess",
+          "label": "Assess Risk & Value"
+        },
+        {
+          "id": "evidence",
+          "label": "Build Evidence Checklist"
+        },
+        {
+          "id": "plan",
+          "label": "Recommend Action Plan"
+        }
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "id": "covenant-test",
+      "title": "Financial Covenant Testing Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for financial covenant testing.",
+      "table": "op_covenant_test",
+      "columns": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_borrower"
+        },
+        {
+          "key": "testDate",
+          "label": "Test Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_testDate"
+        },
+        {
+          "key": "leverageRatio",
+          "label": "Leverage Ratio",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_leverageRatio"
+        },
+        {
+          "key": "covenantLimit",
+          "label": "Covenant Limit",
+          "type": "number",
+          "required": false,
+          "dbKey": "data_covenantLimit"
+        }
+      ]
+    },
+    {
+      "id": "borrowing-base",
+      "title": "Borrowing Base Certificate Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for borrowing base certificate.",
+      "table": "op_borrowing_base",
+      "columns": [
+        {
+          "key": "facility",
+          "label": "Credit Facility",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_facility"
+        },
+        {
+          "key": "eligibleReceivables",
+          "label": "Eligible Receivables",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_eligibleReceivables"
+        },
+        {
+          "key": "eligibleInventory",
+          "label": "Eligible Inventory",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_eligibleInventory"
+        },
+        {
+          "key": "reserves",
+          "label": "Reserves",
+          "type": "currency",
+          "required": false,
+          "dbKey": "data_reserves"
+        }
+      ]
+    },
+    {
+      "id": "reporting",
+      "title": "Borrower Reporting Compliance Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for borrower reporting compliance.",
+      "table": "op_reporting",
+      "columns": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_borrower"
+        },
+        {
+          "key": "deliverable",
+          "label": "Deliverable",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_deliverable"
+        },
+        {
+          "key": "dueDate",
+          "label": "Due Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_dueDate"
+        },
+        {
+          "key": "submissionStatus",
+          "label": "Submission Status",
+          "type": "text",
+          "required": false,
+          "dbKey": "data_submissionStatus"
+        }
+      ]
+    },
+    {
+      "id": "watchlist",
+      "title": "Portfolio Watchlist Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for portfolio watchlist.",
+      "table": "op_watchlist",
+      "columns": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_borrower"
+        },
+        {
+          "key": "riskSignal",
+          "label": "Risk Signal",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_riskSignal"
+        },
+        {
+          "key": "exposure",
+          "label": "Exposure",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_exposure"
+        },
+        {
+          "key": "watchNotes",
+          "label": "Watch Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_watchNotes"
+        }
+      ]
+    },
+    {
+      "id": "amendment",
+      "title": "Waiver & Amendment Workflow Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for waiver & amendment workflow.",
+      "table": "op_amendment",
+      "columns": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_borrower"
+        },
+        {
+          "key": "breach",
+          "label": "Breach",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_breach"
+        },
+        {
+          "key": "waiverFee",
+          "label": "Waiver Fee",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_waiverFee"
+        },
+        {
+          "key": "conditions",
+          "label": "Conditions",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_conditions"
+        }
+      ]
+    },
+    {
+      "id": "collateral",
+      "title": "Collateral Monitoring Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for collateral monitoring.",
+      "table": "op_collateral",
+      "columns": [
+        {
+          "key": "facility",
+          "label": "Credit Facility",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_facility"
+        },
+        {
+          "key": "collateralType",
+          "label": "Collateral Type",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_collateralType"
+        },
+        {
+          "key": "collateralValue",
+          "label": "Collateral Value",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_collateralValue"
+        },
+        {
+          "key": "collateralNotes",
+          "label": "Collateral Notes",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_collateralNotes"
+        }
+      ]
+    },
+    {
+      "id": "valuation",
+      "title": "Portfolio Valuation Review Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for portfolio valuation review.",
+      "table": "op_valuation",
+      "columns": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_borrower"
+        },
+        {
+          "key": "enterpriseValue",
+          "label": "Enterprise Value",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_enterpriseValue"
+        },
+        {
+          "key": "netDebt",
+          "label": "Net Debt",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_netDebt"
+        },
+        {
+          "key": "valuationRationale",
+          "label": "Valuation Rationale",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_valuationRationale"
+        }
+      ]
+    },
+    {
+      "id": "committee",
+      "title": "Credit Committee Package Register",
+      "description": "Operational records, ownership, status, financial value, and evidence for credit committee package.",
+      "table": "op_committee",
+      "columns": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_borrower"
+        },
+        {
+          "key": "meetingDate",
+          "label": "Meeting Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_meetingDate"
+        },
+        {
+          "key": "recommendation",
+          "label": "Recommendation",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_recommendation"
+        },
+        {
+          "key": "committeeMemo",
+          "label": "Committee Memo",
+          "type": "textarea",
+          "required": false,
+          "dbKey": "data_committeeMemo"
+        }
+      ]
+    },
+    {
+      "id": "borrower-master",
+      "title": "Borrower & Sponsor Master",
+      "description": "Borrowers, sponsors, industries, ownership, facilities, and risk owners.",
+      "table": "op_borrower_master",
+      "columns": [
+        {
+          "key": "borrower",
+          "label": "Borrower",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_borrower"
+        },
+        {
+          "key": "sponsor",
+          "label": "Sponsor",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_sponsor"
+        },
+        {
+          "key": "industry",
+          "label": "Industry",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_industry"
+        },
+        {
+          "key": "riskOwner",
+          "label": "Risk Owner",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_riskOwner"
+        }
+      ]
+    },
+    {
+      "id": "facility-register",
+      "title": "Credit Facility Register",
+      "description": "Commitments, drawn amounts, maturity, pricing, security, and agents.",
+      "table": "op_facility_register",
+      "columns": [
+        {
+          "key": "facility",
+          "label": "Facility",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_facility"
+        },
+        {
+          "key": "commitment",
+          "label": "Commitment",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_commitment"
+        },
+        {
+          "key": "drawn",
+          "label": "Drawn Amount",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_drawn"
+        },
+        {
+          "key": "maturity",
+          "label": "Maturity",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_maturity"
+        }
+      ]
+    },
+    {
+      "id": "covenant-library",
+      "title": "Covenant Definition Library",
+      "description": "Agreement definitions, thresholds, cure rights, baskets, and testing cadence.",
+      "table": "op_covenant_library",
+      "columns": [
+        {
+          "key": "covenant",
+          "label": "Covenant",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_covenant"
+        },
+        {
+          "key": "definition",
+          "label": "Definition",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_definition"
+        },
+        {
+          "key": "threshold",
+          "label": "Threshold",
+          "type": "number",
+          "required": true,
+          "dbKey": "data_threshold"
+        },
+        {
+          "key": "testingCadence",
+          "label": "Testing Cadence",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_testingCadence"
+        }
+      ]
+    },
+    {
+      "id": "collateral-register",
+      "title": "Collateral & Lien Register",
+      "description": "Collateral, lien priority, appraisals, insurance, perfection, and monitoring.",
+      "table": "op_collateral_register",
+      "columns": [
+        {
+          "key": "collateral",
+          "label": "Collateral",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_collateral"
+        },
+        {
+          "key": "lienPriority",
+          "label": "Lien Priority",
+          "type": "text",
+          "required": true,
+          "dbKey": "data_lienPriority"
+        },
+        {
+          "key": "appraisedValue",
+          "label": "Appraised Value",
+          "type": "currency",
+          "required": true,
+          "dbKey": "data_appraisedValue"
+        },
+        {
+          "key": "appraisalDate",
+          "label": "Appraisal Date",
+          "type": "date",
+          "required": true,
+          "dbKey": "data_appraisalDate"
+        }
+      ]
+    }
+  ],
+  "domainProduct": {
+    "home": "Private Credit Portfolio Command",
+    "context": "A direct-lending operating system for covenant tests, borrower reporting, borrowing bases, collateral, amendments, watchlists, and committee decisions.",
+    "features": [
+      {
+        "id": "covenants",
+        "title": "Covenant Compliance",
+        "description": "Calculate agreement-defined tests, cure rights, baskets, headroom, and breach status.",
+        "view": "control",
+        "modules": [
+          "covenant-test",
+          "covenant-library"
+        ],
+        "actions": [
+          {
+            "id": "certify-compliance",
+            "label": "Certify Covenant Compliance",
+            "nextStatus": "Approved",
+            "auditDetail": "Certified agreement-defined covenant compliance."
+          },
+          {
+            "id": "declare-breach",
+            "label": "Declare Covenant Breach",
+            "nextStatus": "Review",
+            "auditDetail": "Declared covenant breach and preserved calculation evidence."
+          }
+        ]
+      },
+      {
+        "id": "borrowing-base-control",
+        "title": "Borrowing Base Control",
+        "description": "Validate collateral eligibility, concentrations, reserves, availability, dominion, and certificate signatures.",
+        "view": "reconciliation",
+        "modules": [
+          "borrowing-base",
+          "facility-register"
+        ],
+        "actions": [
+          {
+            "id": "approve-certificate",
+            "label": "Approve Borrowing Base",
+            "nextStatus": "Approved",
+            "auditDetail": "Approved borrowing-base certificate and availability."
+          },
+          {
+            "id": "apply-reserve",
+            "label": "Apply Availability Reserve",
+            "nextStatus": "Investigating",
+            "auditDetail": "Applied lender reserve for unsupported collateral."
+          }
+        ]
+      },
+      {
+        "id": "reporting-calendar",
+        "title": "Borrower Reporting Calendar",
+        "description": "Track every financial, operational, compliance, insurance, and valuation deliverable.",
+        "view": "deadline",
+        "modules": [
+          "reporting",
+          "borrower-master"
+        ],
+        "actions": [
+          {
+            "id": "accept-deliverable",
+            "label": "Accept Borrower Deliverable",
+            "nextStatus": "Approved",
+            "auditDetail": "Accepted borrower reporting deliverable."
+          },
+          {
+            "id": "issue-default-notice",
+            "label": "Issue Reporting Default Notice",
+            "nextStatus": "Review",
+            "auditDetail": "Issued notice for overdue borrower reporting."
+          }
+        ]
+      },
+      {
+        "id": "portfolio-watch",
+        "title": "Portfolio Watchlist",
+        "description": "Combine covenant, payment, liquidity, collateral, sponsor, industry, and valuation deterioration.",
+        "view": "board",
+        "modules": [
+          "watchlist",
+          "collateral-register"
+        ],
+        "actions": [
+          {
+            "id": "add-watchlist",
+            "label": "Add to Watchlist",
+            "nextStatus": "Investigating",
+            "auditDetail": "Added borrower to active portfolio watchlist."
+          },
+          {
+            "id": "remove-watchlist",
+            "label": "Remove from Watchlist",
+            "nextStatus": "Approved",
+            "auditDetail": "Removed borrower after sustained remediation."
+          }
+        ]
+      },
+      {
+        "id": "amendment-committee",
+        "title": "Amendment & Credit Committee",
+        "description": "Control waivers, amendments, fees, conditions, valuation, recommendations, voting, and approval.",
+        "view": "board",
+        "modules": [
+          "amendment",
+          "committee"
+        ],
+        "actions": [
+          {
+            "id": "approve-amendment",
+            "label": "Approve Amendment Terms",
+            "nextStatus": "Approved",
+            "auditDetail": "Approved amendment and conditions."
+          },
+          {
+            "id": "return-underwriting",
+            "label": "Return to Underwriting",
+            "nextStatus": "Investigating",
+            "auditDetail": "Returned package for additional underwriting."
+          }
+        ]
+      }
+    ]
+  },
+  "integrations": [
+    {
+      "id": "integration-1",
+      "name": "Borrower portal",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-2",
+      "name": "Loan accounting",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-3",
+      "name": "General ledger feed",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-4",
+      "name": "Market data",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    },
+    {
+      "id": "integration-5",
+      "name": "Document repository",
+      "category": "Domain data source",
+      "mode": "Read-only demo connector"
+    }
+  ],
+  "featureCount": 40,
+  "seededRecords": 300,
+  "demoUsers": 3,
+  "apiPort": 5523,
+  "dbName": "profit_ai_private_credit_covenant_monitoring"
+}
